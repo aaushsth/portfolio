@@ -89,7 +89,7 @@ export const DATA = {
   skills: {
     android: {
       title: 'Android Development',
-      items: ['Java', 'Kotlin', 'Android SDK', 'Jetpack Compose', 'MVVM Architecture', 'Retrofit', 'Room Database', 'Dagger Hilt', 'Kotlin Coroutines', 'Material Design', 'Firebase', 'GraphQL'],
+      items: ['Java', 'Kotlin', 'Jetpack Compose', 'Android SDK', 'MVVM Architecture', 'Clean Architecture', 'Retrofit', 'Ktor', 'GraphQL', 'Room Database', 'Dagger Hilt', 'Koin', 'Kotlin Coroutines', 'Material Design', 'Firebase'],
     },
     flutter: {
       title: 'Flutter Development',
