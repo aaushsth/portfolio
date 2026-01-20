@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { StyleSheet, View, ScrollView, Dimensions, StatusBar } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -21,6 +21,8 @@ const { height } = Dimensions.get('window');
 const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
 
 export default function App() {
+  const scrollViewRef = useRef(null);
+  const contactSectionY = useRef(0);
   const scrollY = useSharedValue(0);
   const [visibleSections, setVisibleSections] = useState({
     hero: true,
@@ -66,22 +68,35 @@ export default function App() {
     },
   });
 
+  const scrollToContact = () => {
+    if (scrollViewRef.current) {
+      scrollViewRef.current.scrollTo({ y: contactSectionY.current, animated: true });
+    }
+  };
+
+  const handleContactLayout = (event) => {
+    contactSectionY.current = event.nativeEvent.layout.y;
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={COLORS.background} />
       <AnimatedScrollView
+        ref={scrollViewRef}
         style={styles.scrollView}
         contentContainerStyle={styles.scrollContent}
         onScroll={scrollHandler}
         scrollEventThrottle={16}
         showsVerticalScrollIndicator={false}
       >
-        <HeroSection />
+        <HeroSection onGetInTouch={scrollToContact} />
         <StatsSection isVisible={visibleSections.stats || visibleSections.hero} />
         <SkillsSection isVisible={visibleSections.skills} />
         <ExperienceSection isVisible={visibleSections.experience} />
         <ProjectsSection isVisible={visibleSections.projects} />
-        <ContactSection isVisible={visibleSections.contact} />
+        <View onLayout={handleContactLayout}>
+          <ContactSection isVisible={visibleSections.contact} />
+        </View>
         <Footer isVisible={visibleSections.footer || visibleSections.contact} />
       </AnimatedScrollView>
     </View>

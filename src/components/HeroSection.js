@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Linking, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Animated, {
   useSharedValue,
@@ -9,14 +9,16 @@ import Animated, {
   withSpring,
   withRepeat,
   withSequence,
-  Easing,
 } from 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS, FONTS, SIZES } from '../constants/theme';
 
 const { width } = Dimensions.get('window');
 
-const HeroSection = () => {
+// CV URL - Replace with your actual CV link (Google Drive, Dropbox, etc.)
+const CV_URL = 'https://drive.google.com/file/d/1PCIiHeicVACeNiKFbgdFqXegrKlWe23t/view?usp=sharing';
+
+const HeroSection = ({ onGetInTouch }) => {
   const titleOpacity = useSharedValue(0);
   const titleTranslateY = useSharedValue(20);
   const subtitleOpacity = useSharedValue(0);
@@ -29,7 +31,6 @@ const HeroSection = () => {
   const pulseScale = useSharedValue(1);
 
   useEffect(() => {
-    // Fast, snappy animations
     badgeOpacity.value = withTiming(1, { duration: 250 });
     badgeScale.value = withSpring(1, { damping: 15, stiffness: 200 });
 
@@ -44,7 +45,6 @@ const HeroSection = () => {
     buttonOpacity.value = withDelay(400, withTiming(1, { duration: 250 }));
     buttonTranslateY.value = withDelay(400, withSpring(0, { damping: 20, stiffness: 200 }));
 
-    // Pulse animation
     pulseScale.value = withRepeat(
       withSequence(
         withTiming(1.3, { duration: 800 }),
@@ -54,6 +54,10 @@ const HeroSection = () => {
       true
     );
   }, []);
+
+  const handleDownloadCV = () => {
+    Linking.openURL(CV_URL);
+  };
 
   const badgeStyle = useAnimatedStyle(() => ({
     opacity: badgeOpacity.value,
@@ -116,7 +120,7 @@ const HeroSection = () => {
         </Animated.Text>
 
         <Animated.View style={[styles.buttonContainer, buttonStyle]}>
-          <TouchableOpacity style={styles.primaryButton}>
+          <TouchableOpacity style={styles.primaryButton} onPress={onGetInTouch}>
             <LinearGradient
               colors={COLORS.gradient.primary}
               start={{ x: 0, y: 0 }}
@@ -128,7 +132,7 @@ const HeroSection = () => {
             </LinearGradient>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.secondaryButton}>
+          <TouchableOpacity style={styles.secondaryButton} onPress={handleDownloadCV}>
             <Ionicons name="download-outline" size={20} color={COLORS.primary} />
             <Text style={styles.secondaryButtonText}>Download CV</Text>
           </TouchableOpacity>

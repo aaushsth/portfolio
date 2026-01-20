@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   TextInput,
   Linking,
+  Alert,
+  Platform,
 } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -93,10 +95,32 @@ const ContactSection = ({ isVisible }) => {
     Linking.openURL(`tel:${DATA.contact.phone}`);
   };
 
+  const handleLinkedInPress = () => {
+    Linking.openURL('https://www.linkedin.com/in/aaush-shrestha-a7a4a1156/');
+  };
+
+  const handleSendMessage = () => {
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      if (Platform.OS === 'web') {
+        alert('Please fill in your name, email, and message.');
+      } else {
+        Alert.alert('Missing Information', 'Please fill in your name, email, and message.');
+      }
+      return;
+    }
+
+    const emailSubject = subject.trim() || 'Contact from Portfolio';
+    const emailBody = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+
+    const mailtoUrl = `mailto:${DATA.contact.email}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+
+    Linking.openURL(mailtoUrl);
+  };
+
   const contactItems = [
     { icon: 'mail-outline', label: 'Email', value: DATA.contact.email, onPress: handleEmailPress },
     { icon: 'call-outline', label: 'Phone', value: DATA.contact.phone, onPress: handlePhonePress },
-    { icon: 'logo-linkedin', label: 'LinkedIn', value: DATA.contact.linkedin },
+    { icon: 'logo-linkedin', label: 'LinkedIn', value: DATA.contact.linkedin, onPress: handleLinkedInPress },
     { icon: 'location-outline', label: 'Location', value: DATA.contact.location },
   ];
 
@@ -175,7 +199,7 @@ const ContactSection = ({ isVisible }) => {
             />
           </View>
 
-          <TouchableOpacity style={styles.submitButton}>
+          <TouchableOpacity style={styles.submitButton} onPress={handleSendMessage}>
             <LinearGradient
               colors={COLORS.gradient.primary}
               start={{ x: 0, y: 0 }}
