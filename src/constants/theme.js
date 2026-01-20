@@ -93,7 +93,7 @@ export const DATA = {
     },
     flutter: {
       title: 'Flutter Development',
-      items: ['Flutter', 'Dart', 'BLoC Pattern', 'Provider', 'Dio', 'Flutter Hooks'],
+      items: ['Flutter', 'Dart', 'BLoC Pattern', 'Provider', 'Dio', 'Firebase', 'SQLite', 'GetX', 'Riverpod'],
     },
     tools: {
       title: 'Tools & Technologies',
@@ -101,7 +101,7 @@ export const DATA = {
     },
     other: {
       title: 'Other Skills',
-      items: ['REST APIs', 'WebSocket', 'Socket.io', 'Google Maps', 'Payment Gateways', 'Agile/Scrum'],
+      items: ['REST APIs', 'WebSocket', 'Socket.io', 'Google Maps', 'MapBoc', 'MapsPeople', 'Payment Gateways', 'Agile/Scrum'],
     },
   },
 
@@ -151,13 +151,13 @@ export const DATA = {
     {
       title: 'Safety & Emergency Management',
       description: 'A comprehensive safety app with real-time alerts, chat functionality, and map integration for emergency response.',
-      tags: ['Android', 'Google Maps', 'Firebase', 'Real-time Chat'],
+      tags: ['Kotlin', 'Jetpack Compose', 'Dagger Hilt', 'Clean Architecture', 'Google Maps', 'Mapbox', 'MapsPeople', 'Firebase', 'Real-time Chat'],
       color: '#EF4444',
     },
     {
       title: 'Game Analysis & Booking',
       description: 'Sports analytics platform with booking system, real-time game statistics, and player performance tracking.',
-      tags: ['Kotlin', 'MVVM', 'Retrofit', 'GraphQL'],
+      tags: ['Kotlin', 'MVVM', 'Retrofit'],
       color: '#F59E0B',
     },
     {
@@ -205,7 +205,7 @@ export const DATA = {
     {
       title: 'Streaming App',
       description: 'Video streaming platform with offline downloads, personalized recommendations, and multi-device sync.',
-      tags: ['Kotlin', 'ExoPlayer', 'MVVM', 'Dagger Hilt'],
+      tags: ['Kotlin', 'ExoPlayer', 'MVVM', 'Koin'],
       color: '#A855F7',
     },
   ],
