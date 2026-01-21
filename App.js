@@ -1,11 +1,10 @@
-import React, { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { StyleSheet, View, ScrollView, Dimensions, StatusBar } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedScrollHandler,
   runOnJS,
 } from 'react-native-reanimated';
-
 import {
   HeroSection,
   StatsSection,

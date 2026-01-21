@@ -7,7 +7,6 @@ import Animated, {
   withDelay,
   withSpring,
 } from 'react-native-reanimated';
-import { Ionicons } from '@expo/vector-icons';
 import { COLORS, FONTS, SIZES, DATA } from '../constants/theme';
 
 const { width } = Dimensions.get('window');
@@ -43,11 +42,11 @@ const SkillCategory = ({ categoryKey, category, index, isVisible }) => {
   const translateY = useSharedValue(25);
   const scale = useSharedValue(0.95);
 
-  const iconMap = {
-    android: 'logo-android',
-    flutter: 'phone-portrait-outline',
-    tools: 'construct-outline',
-    other: 'apps-outline',
+  const emojiMap = {
+    android: '🤖',
+    flutter: '📱',
+    tools: '🛠️',
+    other: '⚡',
   };
 
   const colorMap = {
@@ -75,7 +74,7 @@ const SkillCategory = ({ categoryKey, category, index, isVisible }) => {
     <Animated.View style={[styles.categoryCard, animatedStyle]}>
       <View style={styles.cardHeader}>
         <View style={[styles.iconContainer, { backgroundColor: colorMap[categoryKey] + '20' }]}>
-          <Ionicons name={iconMap[categoryKey]} size={24} color={colorMap[categoryKey]} />
+          <Text style={styles.iconEmoji}>{emojiMap[categoryKey]}</Text>
         </View>
         <Text style={styles.categoryTitle}>{category.title}</Text>
       </View>
@@ -194,6 +193,9 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  iconEmoji: {
+    fontSize: 24,
   },
   categoryTitle: {
     fontSize: SIZES.lg,

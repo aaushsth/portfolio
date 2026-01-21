@@ -101,7 +101,7 @@ export const DATA = {
     },
     other: {
       title: 'Other Skills',
-      items: ['REST APIs', 'WebSocket', 'Socket.io', 'Google Maps', 'MapBoc', 'MapsPeople', 'Payment Gateways', 'Agile/Scrum'],
+      items: ['REST APIs', 'WebSocket', 'Socket.io', 'Google Maps', 'MapBox', 'MapsPeople', 'Payment Gateways', 'Agile/Scrum'],
     },
   },
 

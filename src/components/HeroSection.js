@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Linking, Platform } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Linking, Platform, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Animated, {
   useSharedValue,
@@ -10,7 +10,6 @@ import Animated, {
   withRepeat,
   withSequence,
 } from 'react-native-reanimated';
-import { Ionicons } from '@expo/vector-icons';
 import { COLORS, FONTS, SIZES } from '../constants/theme';
 
 const { width } = Dimensions.get('window');
@@ -29,10 +28,15 @@ const HeroSection = ({ onGetInTouch }) => {
   const badgeOpacity = useSharedValue(0);
   const badgeScale = useSharedValue(0.8);
   const pulseScale = useSharedValue(1);
+  const profileOpacity = useSharedValue(0);
+  const profileScale = useSharedValue(0.8);
 
   useEffect(() => {
     badgeOpacity.value = withTiming(1, { duration: 250 });
     badgeScale.value = withSpring(1, { damping: 15, stiffness: 200 });
+
+    profileOpacity.value = withDelay(50, withTiming(1, { duration: 300 }));
+    profileScale.value = withDelay(50, withSpring(1, { damping: 15, stiffness: 200 }));
 
     titleOpacity.value = withDelay(100, withTiming(1, { duration: 300 }));
     titleTranslateY.value = withDelay(100, withSpring(0, { damping: 20, stiffness: 200 }));
@@ -87,6 +91,11 @@ const HeroSection = ({ onGetInTouch }) => {
     transform: [{ scale: pulseScale.value }],
   }));
 
+  const profileStyle = useAnimatedStyle(() => ({
+    opacity: profileOpacity.value,
+    transform: [{ scale: profileScale.value }],
+  }));
+
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -127,13 +136,13 @@ const HeroSection = ({ onGetInTouch }) => {
               end={{ x: 1, y: 0 }}
               style={styles.buttonGradient}
             >
-              <Ionicons name="mail-outline" size={20} color={COLORS.text} />
+              <Text style={styles.buttonEmoji}>✉️</Text>
               <Text style={styles.buttonText}>Get In Touch</Text>
             </LinearGradient>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.secondaryButton} onPress={handleDownloadCV}>
-            <Ionicons name="download-outline" size={20} color={COLORS.primary} />
+            <Text style={styles.buttonEmoji}>📄</Text>
             <Text style={styles.secondaryButtonText}>Download CV</Text>
           </TouchableOpacity>
         </Animated.View>
@@ -144,6 +153,14 @@ const HeroSection = ({ onGetInTouch }) => {
         <View style={[styles.circle, styles.circle2]} />
         <View style={[styles.circle, styles.circle3]} />
       </View>
+
+      <Animated.View style={[styles.watermarkContainer, profileStyle]}>
+        <Image
+          source={require('../../assets/profile.jpg')}
+          style={styles.watermarkImage}
+          resizeMode="cover"
+        />
+      </Animated.View>
     </View>
   );
 };
@@ -172,6 +189,18 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     alignSelf: 'flex-start',
     marginBottom: 24,
+  },
+  watermarkContainer: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    zIndex: 0,
+    overflow: 'hidden',
+  },
+  watermarkImage: {
+    width: '70%',
+    height: '100%',
+    opacity: 0.08,
   },
   pulseDot: {
     width: 8,
@@ -234,6 +263,9 @@ const styles = StyleSheet.create({
     color: COLORS.text,
     fontSize: SIZES.base,
     fontWeight: FONTS.semiBold,
+  },
+  buttonEmoji: {
+    fontSize: 18,
   },
   secondaryButton: {
     flexDirection: 'row',

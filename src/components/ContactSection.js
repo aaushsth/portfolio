@@ -18,7 +18,6 @@ import Animated, {
   withSpring,
 } from 'react-native-reanimated';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Ionicons } from '@expo/vector-icons';
 import { COLORS, FONTS, SIZES, DATA } from '../constants/theme';
 
 const { width } = Dimensions.get('window');
@@ -46,7 +45,7 @@ const ContactItem = ({ icon, label, value, index, isVisible, onPress }) => {
     <TouchableOpacity onPress={onPress} disabled={!onPress}>
       <Animated.View style={[styles.contactItem, animatedStyle]}>
         <View style={styles.contactIconContainer}>
-          <Ionicons name={icon} size={20} color={COLORS.primary} />
+          <Text style={styles.contactEmoji}>{icon}</Text>
         </View>
         <View style={styles.contactInfo}>
           <Text style={styles.contactLabel}>{label}</Text>
@@ -118,10 +117,10 @@ const ContactSection = ({ isVisible }) => {
   };
 
   const contactItems = [
-    { icon: 'mail-outline', label: 'Email', value: DATA.contact.email, onPress: handleEmailPress },
-    { icon: 'call-outline', label: 'Phone', value: DATA.contact.phone, onPress: handlePhonePress },
-    { icon: 'logo-linkedin', label: 'LinkedIn', value: DATA.contact.linkedin, onPress: handleLinkedInPress },
-    { icon: 'location-outline', label: 'Location', value: DATA.contact.location },
+    { icon: '✉️', label: 'Email', value: DATA.contact.email, onPress: handleEmailPress },
+    { icon: '📞', label: 'Phone', value: DATA.contact.phone, onPress: handlePhonePress },
+    { icon: '💼', label: 'LinkedIn', value: DATA.contact.linkedin, onPress: handleLinkedInPress },
+    { icon: '📍', label: 'Location', value: DATA.contact.location },
   ];
 
   return (
@@ -206,7 +205,7 @@ const ContactSection = ({ isVisible }) => {
               end={{ x: 1, y: 0 }}
               style={styles.submitGradient}
             >
-              <Ionicons name="send-outline" size={18} color={COLORS.text} />
+              <Text style={styles.sendEmoji}>📤</Text>
               <Text style={styles.submitText}>Send Message</Text>
             </LinearGradient>
           </TouchableOpacity>
@@ -275,6 +274,12 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.primary + '15',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  contactEmoji: {
+    fontSize: 20,
+  },
+  sendEmoji: {
+    fontSize: 18,
   },
   contactInfo: {
     flex: 1,

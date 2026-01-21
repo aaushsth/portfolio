@@ -7,7 +7,6 @@ import Animated, {
   withDelay,
   withSpring,
 } from 'react-native-reanimated';
-import { Ionicons } from '@expo/vector-icons';
 import { COLORS, FONTS, SIZES, DATA } from '../constants/theme';
 
 const { width } = Dimensions.get('window');
@@ -54,17 +53,17 @@ const ExperienceCard = ({ experience, index, isVisible, isLast }) => {
         <Text style={styles.jobTitle}>{experience.title}</Text>
 
         <View style={styles.companyRow}>
-          <Ionicons name="business-outline" size={16} color={COLORS.primary} />
+          <Text style={styles.companyEmoji}>🏢</Text>
           <Text style={styles.company}>{experience.company}</Text>
         </View>
 
         <View style={styles.metaRow}>
           <View style={styles.metaItem}>
-            <Ionicons name="location-outline" size={14} color={COLORS.textMuted} />
+            <Text style={styles.metaEmoji}>📍</Text>
             <Text style={styles.metaText}>{experience.location}</Text>
           </View>
           <View style={styles.metaItem}>
-            <Ionicons name="calendar-outline" size={14} color={COLORS.textMuted} />
+            <Text style={styles.metaEmoji}>📅</Text>
             <Text style={styles.metaText}>{experience.period}</Text>
           </View>
         </View>
@@ -226,6 +225,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 8,
     marginBottom: 12,
+  },
+  companyEmoji: {
+    fontSize: 16,
+  },
+  metaEmoji: {
+    fontSize: 14,
   },
   company: {
     fontSize: SIZES.base,

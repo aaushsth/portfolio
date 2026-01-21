@@ -7,7 +7,6 @@ import Animated, {
   withDelay,
   withSpring,
 } from 'react-native-reanimated';
-import { Ionicons } from '@expo/vector-icons';
 import { COLORS, FONTS, SIZES, DATA } from '../constants/theme';
 
 const { width } = Dimensions.get('window');
@@ -39,7 +38,7 @@ const ProjectCard = ({ project, index, isVisible }) => {
     <Animated.View style={[styles.projectCard, cardStyle]}>
       <View style={[styles.cardHeader, { backgroundColor: project.color + '15' }]}>
         <View style={[styles.projectIcon, { backgroundColor: project.color + '30' }]}>
-          <Ionicons name="code-slash-outline" size={24} color={project.color} />
+          <Text style={styles.projectEmoji}>💻</Text>
         </View>
       </View>
 
@@ -160,6 +159,9 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  projectEmoji: {
+    fontSize: 24,
   },
   cardBody: {
     padding: 20,

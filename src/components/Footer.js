@@ -7,7 +7,6 @@ import Animated, {
   withDelay,
   withSpring,
 } from 'react-native-reanimated';
-import { Ionicons } from '@expo/vector-icons';
 import { COLORS, SIZES } from '../constants/theme';
 
 const Footer = ({ isVisible }) => {
@@ -27,9 +26,9 @@ const Footer = ({ isVisible }) => {
   }));
 
   const socialLinks = [
-    { icon: 'logo-github', url: 'https://github.com' },
-    { icon: 'logo-linkedin', url: 'https://linkedin.com' },
-    { icon: 'logo-twitter', url: 'https://twitter.com' },
+    { icon: '🐙', url: 'https://github.com' },
+    { icon: '💼', url: 'https://linkedin.com' },
+    { icon: '🐦', url: 'https://twitter.com' },
   ];
 
   return (
@@ -42,7 +41,7 @@ const Footer = ({ isVisible }) => {
               style={styles.socialButton}
               onPress={() => Linking.openURL(link.url)}
             >
-              <Ionicons name={link.icon} size={20} color={COLORS.textSecondary} />
+              <Text style={styles.socialEmoji}>{link.icon}</Text>
             </TouchableOpacity>
           ))}
         </View>
@@ -80,6 +79,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     borderColor: COLORS.border,
+  },
+  socialEmoji: {
+    fontSize: 18,
   },
   copyright: {
     fontSize: SIZES.sm,
