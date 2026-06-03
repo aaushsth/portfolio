@@ -38,7 +38,7 @@ const ProjectCard = ({ project, index, isVisible }) => {
     <Animated.View style={[styles.projectCard, cardStyle]}>
       <View style={[styles.cardHeader, { backgroundColor: project.color + '15' }]}>
         <View style={[styles.projectIcon, { backgroundColor: project.color + '30' }]}>
-          <Text style={styles.projectEmoji}>💻</Text>
+          <Text style={styles.projectEmoji}>{project.icon}</Text>
         </View>
       </View>
 

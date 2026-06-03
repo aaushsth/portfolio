@@ -89,7 +89,7 @@ export const DATA = {
   skills: {
     android: {
       title: 'Android Development',
-      items: ['Java', 'Kotlin', 'Jetpack Compose', 'Android SDK', 'MVVM Architecture', 'Clean Architecture', 'Retrofit', 'Ktor', 'GraphQL', 'Room Database', 'Dagger Hilt', 'Koin', 'Kotlin Coroutines', 'Material Design', 'Firebase'],
+      items: ['Java', 'Kotlin', 'Jetpack Compose', 'Android SDK', 'MVVM Architecture', 'Clean Architecture', 'Retrofit', 'Ktor',  'Kotlin Multiplatform','GraphQL', 'Room Database', 'Dagger Hilt', 'Koin', 'Kotlin Coroutines', 'Material Design', 'Firebase'],
     },
     flutter: {
       title: 'Flutter Development',
@@ -151,62 +151,72 @@ export const DATA = {
     {
       title: 'Safety & Emergency Management',
       description: 'A comprehensive safety app with real-time alerts, chat functionality, and map integration for emergency response.',
-      tags: ['Kotlin', 'Jetpack Compose', 'Dagger Hilt', 'Clean Architecture', 'Google Maps', 'Mapbox', 'MapsPeople', 'Firebase', 'Real-time Chat'],
+      tags: ['Kotlin', 'Jetpack Compose', 'Dagger Hilt', 'Clean Architecture', 'Google Maps', 'Mapbox', 'MapsPeople', 'Firebase', 'Real-time Chat', 'Push Notifications', 'Socket.io'],
       color: '#EF4444',
+      icon: '🚨',
     },
     {
       title: 'Game Analysis & Booking',
       description: 'Sports analytics platform with booking system, real-time game statistics, and player performance tracking.',
       tags: ['Kotlin', 'MVVM', 'Retrofit'],
       color: '#F59E0B',
+      icon: '🎮',
     },
     {
       title: 'Payment App',
       description: 'Secure payment processing application with Stripe integration, transaction history, and multi-currency support.',
       tags: ['Android', 'Stripe API', 'Khalti', 'Security'],
       color: '#10B981',
+      icon: '💳',
     },
     {
       title: 'Job Portal App',
       description: 'Job search and recruitment platform connecting job seekers with employers, featuring advanced filters and application tracking.',
       tags: ['Flutter', 'BLoC', 'REST API', 'Firebase Auth'],
       color: '#6366F1',
+      icon: '💼',
     },
     {
       title: 'Reward App',
       description: 'Loyalty and rewards management system with points tracking, redemption features, and gamification elements.',
       tags: ['Kotlin', 'Room DB', 'Coroutines', 'Material Design'],
       color: '#EC4899',
+      icon: '🎁',
     },
     {
       title: 'Measurement App',
       description: 'Precision measurement tool using device sensors and camera for accurate real-world measurements.',
       tags: ['Android', 'Camera API', 'Custom Views', 'Sensors'],
       color: '#8B5CF6',
+      icon: '📏',
     },
     {
       title: 'EdTech App',
       description: 'Educational technology platform with video streaming, interactive quizzes, and progress tracking for students.',
       tags: ['Flutter', 'Provider', 'Video Streaming', 'SQLite'],
       color: '#06B6D4',
+      icon: '📚',
     },
     {
       title: 'Social Media App',
       description: 'Social networking platform with posts, stories, real-time messaging, and content sharing capabilities.',
       tags: ['Kotlin', 'WebSocket', 'Firebase', 'Jetpack Compose'],
       color: '#F97316',
+      icon: '💬',
     },
     {
       title: 'Ridesharing App',
       description: 'Ride-hailing platform with real-time location tracking, route optimization, and in-app payment processing.',
       tags: ['Android', 'Google Maps', 'Location Services', 'Payment Gateway'],
       color: '#14B8A6',
+      icon: '🚗' ,
     },
     {
       title: 'Streaming App',
       description: 'Video streaming platform with offline downloads, personalized recommendations, and multi-device sync.',
       tags: ['Kotlin', 'ExoPlayer', 'MVVM', 'Koin'],
       color: '#A855F7',
+      icon: '📺',
     },
   ],
 
