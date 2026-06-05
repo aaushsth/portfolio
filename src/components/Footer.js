@@ -47,7 +47,7 @@ const Footer = ({ isVisible }) => {
         </View>
 
         <Text style={styles.copyright}>
-          © 2025 Aayush Shrestha. All rights reserved.
+          © 2025 Aaush Shrestha. All rights reserved.
         </Text>
       </View>
     </Animated.View>

@@ -11,11 +11,12 @@ import Animated, {
   withSequence,
 } from 'react-native-reanimated';
 import { COLORS, FONTS, SIZES } from '../constants/theme';
+import TypingRole from './TypingRole';
 
 const { width } = Dimensions.get('window');
 
 // CV URL - Replace with your actual CV link (Google Drive, Dropbox, etc.)
-const CV_URL = 'https://drive.google.com/file/d/1PCIiHeicVACeNiKFbgdFqXegrKlWe23t/view?usp=sharing';
+const CV_URL = 'https://drive.google.com/file/d/1EcZcDaPL_IT2co8AqTOocb1cwWpEIsAW/view?usp=sharing';
 
 const HeroSection = ({ onGetInTouch }) => {
   const titleOpacity = useSharedValue(0);
@@ -110,7 +111,7 @@ const HeroSection = ({ onGetInTouch }) => {
         </Animated.View>
 
         <Animated.Text style={[styles.greeting, titleStyle]}>
-          Hi, I'm <Text style={styles.nameHighlight}>Aayush Shrestha</Text>
+          Hi, I'm <Text style={styles.nameHighlight}>Aaush Shrestha</Text>
         </Animated.Text>
 
         <Animated.View style={subtitleStyle}>
@@ -120,12 +121,12 @@ const HeroSection = ({ onGetInTouch }) => {
             end={{ x: 1, y: 0 }}
             style={styles.roleContainer}
           >
-            <Text style={styles.role}>Software Engineer | Android Developer</Text>
+            <TypingRole />
           </LinearGradient>
         </Animated.View>
 
         <Animated.Text style={[styles.description, descStyle]}>
-          A self-taught mobile application developer with a passion for developing mobile apps since 2019. Highly passionate about new technologies and engaged in solving software engineering challenges. I believe in the power of programming to transform thoughts into reality and improve people's lives.
+          Mobile Application Developer with 6+ years of experience designing, developing, and maintaining scalable mobile applications. Specialized in Android development with expertise in Kotlin, Jetpack Compose, Flutter, and Kotlin Multiplatform (KMP). Strong background in building high-performance, user-centric applications using modern architectures, including Clean Architecture and MVVM. Passionate about solving complex software engineering challenges, driving technical excellence, and delivering innovative mobile solutions that create meaningful user impact.
         </Animated.Text>
 
         <Animated.View style={[styles.buttonContainer, buttonStyle]}>
